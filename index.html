@@ -14,7 +14,13 @@
 <body>
 
   <main class="container">
-    <h1>Advice #<span id="adviceID"></span></h1>
+    <div class="h1wrapper">
+      <h1>Advice #<span id="adviceID"></span></h1>
+      <div class="next-buttons">
+        <div role="button" class="arrowBtn" data-arrowBtn="Back" id="back"></div>
+        <div role="button" class="arrowBtn" data-arrowBtn="Next" id="next"></div>
+      </div>
+    </div>
     
     <blockquote id="adviceText"></blockquote>
 
@@ -22,16 +28,12 @@
       <img src="images/pattern-divider-mobile.svg" alt="A line crossing between the text and the button">
     </picture>
 
-    <div class="advice-button">
+    <div title="Generate a new random advice" class="advice-button">
       <button id="adviceGenerator">
         <img src="images/icon-dice.svg" alt="">
       </button>
     </div>
 
-    <div class="next-buttons">
-      <button class="arrowBtn" data-arrowBtn id="back">Back</button>
-      <button class="arrowBtn" data-arrowBtn id="next">Next</button>
-    </div>
   </main>
 
 

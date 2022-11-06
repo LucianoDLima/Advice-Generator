@@ -16,6 +16,9 @@ img {
     --background-tertiary: hsl(217, 19%, 38%);
     --background-secondary: hsl(217, 19%, 24%);
     --background-main: hsl(218, 23%, 16%);
+
+    --arrow-size: 15px;
+    --negative-arrow-size: -15px
 }
 
 body {
@@ -38,28 +41,81 @@ body {
     max-width: 500px;
 }
 
-.container h1 {
+.h1wrapper {
+    margin-bottom: 1.6rem;
+    position: relative;
+}
+
+.h1wrapper h1 {
     color: var(--font-primary-colorful);
     text-transform: uppercase;
     letter-spacing: 0.27rem;
     font-size: 0.62rem;
-    margin-bottom: 1.6rem;
 }
 
 .next-buttons {
     display: flex;
     justify-content: center;
     gap: 5rem;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .arrowBtn {
-    padding: .25rem;
-    border-radius: .5rem;
-    background-color: var(--font-primary);
-    color: var(--background-tertiary);
-    border: none;
+    width: 0; 
+    height: 0; 
+    border-top: var(--arrow-size) solid var(--background-secondary);
+    border-bottom: var(--arrow-size) solid var(--background-secondary);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: 150ms;
 }
 
+.arrowBtn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    background-color: var(--font-primary-colorful);
+    transform: translateY(-50%);
+    border-top: calc(var(--arrow-size)/2) solid var(--font-primary-colorful);
+    border-bottom: calc(var(--arrow-size)/2) solid var(--font-primary-colorful);
+    
+    
+}
+
+.arrowBtn:hover {
+    /* --font-primary-colorful: var(--font-primary); */
+    opacity: .6;
+}
+
+.arrowBtn:active {
+    --font-primary-colorful: var(--font-primary);
+    opacity: 1;
+}
+
+[data-arrowBtn="Back"] {
+    left: 0;
+    border-right: var(--arrow-size) solid var(--font-primary-colorful);
+}
+
+[data-arrowBtn="Back"]::after {
+    right: var(--negative-arrow-size);
+    border-right: calc(var(--arrow-size)/2) solid var(--background-secondary);
+}
+
+[data-arrowBtn="Next"] {
+    right: 0;
+    border-left: var(--arrow-size) solid var(--font-primary-colorful);
+}
+
+[data-arrowBtn="Next"]::after {
+    right: calc(var(--arrow-size)/2);
+    border-left: calc(var(--arrow-size)/2) solid var(--background-secondary);
+}
 
 .container blockquote {
     font-size: 1.4rem;
